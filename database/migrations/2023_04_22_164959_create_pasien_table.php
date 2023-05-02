@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('pasien', function (Blueprint $table) {
             $table->integer('pasien_id', true);
             $table->string('pasien_nama', 50);
+            $table->string('pasien_nik', 16);
+            $table->char('pasien_gender', 1);
             $table->string('pasien_foto', 50)->nullable();
             $table->string('pasien_alamat', 100);
         });

@@ -18,6 +18,8 @@ class ProfileResource extends JsonResource
         return [
             'pasien_id' => $this->pasien_id,
             'pasien_nama' => $this->pasien_nama,
+            'pasien_nik' => $this->pasien_nik,
+            'pasien_gender' => $this->pasien_gender,
             'pasien_foto' => $this->pasien_foto,
             'pasien_alamat' => $this->pasien_alamat,
         ];

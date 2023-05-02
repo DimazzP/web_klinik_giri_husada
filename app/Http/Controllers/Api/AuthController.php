@@ -74,10 +74,11 @@ class AuthController extends Controller
         try {
 
             $credentials = Validator::make($request->all(), [
-                'user_nowa' => ['required', 'string', 'max:255', Rule::unique(User::class),],
+                'user_nowa' => ['required', 'string', 'max:13', 'min:12', Rule::unique(User::class),],
                 'password' => ['required', 'min:8'],
-                'user_idkategori' => ['required', 'max:1'],
+                'pasien_nik' => ['required', 'max:16', 'min:16'],
                 'pasien_nama' => ['required', 'max:50'],
+                'pasien_gender' => ['required', 'max:1'],
                 'pasien_alamat' => ['required', 'max:100'],
                 'device_name' => ['required'],
                 // 'pasien_foto' => ['required'],
@@ -88,7 +89,7 @@ class AuthController extends Controller
                     'status' => 403,
                     'title' => 'Validasi Error',
                     'message' => 'Pastikan data sudah terisi semua dan sudah sesuai',
-                    'data' => null,
+                    'data' => $credentials->errors(),
                     'token' => null,
                 ], 403);
             }
@@ -96,6 +97,8 @@ class AuthController extends Controller
 
             $profile = Profile::create([
                 'pasien_nama' => $request->pasien_nama,
+                'pasien_nik' => $request->pasien_nik,
+                'pasien_gender' => $request->pasien_gender,
                 'pasien_foto' => $request->pasien_foto,
                 'pasien_alamat' => $request->pasien_alamat,
             ]);

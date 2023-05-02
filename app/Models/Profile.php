@@ -14,6 +14,8 @@ class Profile extends Model
 
     protected $fillable = [
         'pasien_nama',
+        'pasien_nik',
+        'pasien_gender',
         'pasien_foto',
         'pasien_alamat',
     ];
