@@ -16,16 +16,13 @@ class JenisLayananSeeder extends Seeder
     {
         DB::table('jenis_layanan')->insert([
             [
-                'jenis_layanan' => '',
                 'jenis_layanan' => 'Umum',
                 'jenis_iddokter' => 1,
             ],
             [
-                'jenis_layanan' => '',
                 'jenis_layanan' => 'Gigi',
                 'jenis_iddokter' => 2,
             ], [
-                'jenis_layanan' => '',
                 'jenis_layanan' => 'Ibu & Anak',
                 'jenis_iddokter' => 3,
             ],

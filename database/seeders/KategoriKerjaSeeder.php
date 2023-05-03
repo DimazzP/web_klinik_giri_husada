@@ -16,9 +16,7 @@ class KategoriKerjaSeeder extends Seeder
     {
         DB::table('kategori_kerja')->insert([
             [
-                'jenis_layanan' => '',
-                'jenis_layanan' => 'Umum',
-                'jenis_iddokter' => 1,
+                'katekerja_nama' => 'Dokter',
             ],
 
         ]);

@@ -13,7 +13,9 @@ class DaftarController extends Controller
     public function show($id)
     {
         // $daftar = DaftarLayanan::where('daftar_idpasien', 1)->with('jenislayanan')->get();
-        $daftar = DaftarLayanan::join('jenis_layanan', 'jenis_id', '=', 'daftar_layanan.daftar_idjenis')->join('pekerja', 'jenis_iddokter', '=', 'pekerja_id')->select('daftar_id', 'daftar_tanggal', 'daftar_status', 'jenis_layanan', 'pekerja_nama')->get();
+        $daftar = DaftarLayanan::join('jenis_layanan', 'jenis_id', '=', 'daftar_layanan.daftar_idjenis')->join('pekerja', 'jenis_iddokter', '=', 'pekerja_id')->select('daftar_id', 'daftar_tanggal', 'daftar_status', 'daftar_nomor', 'jenis_layanan', 'pekerja_nama')->get();
+        // $daftar = DaftarLayanan::with('jenis_layanan')->select('daftar_id', 'daftar_tanggal', 'daftar_status', 'jenis_layanan')->get();
+
         if ($daftar == null) {
             return response()->json([
                 'status' => 200,
@@ -34,6 +36,7 @@ class DaftarController extends Controller
         $daftar = DaftarLayanan::create([
             'daftar_tanggal' => $request->daftar_tanggal,
             'daftar_status' => $request->daftar_status,
+            'daftar_nomor' => $request->daftar_nomor,
             'daftar_idpasien' => $request->daftar_idpasien,
             'daftar_idjenis' => $request->daftar_idjenis,
         ]);

@@ -24,3 +24,10 @@ class DaftarLayananSeeder extends Seeder
         ]);
     }
 }
+
+// php artisan db:seed --class=KategoriUserSeeder
+// php artisan db:seed --class=KategoriKerjaSeeder
+// php artisan db:seed --class=PekerjaSeeder
+// php artisan db:seed --class=JenisLayananSeeder
+//masukkan user dulu
+// php artisan db:seed --class=DaftarLayananSeeder

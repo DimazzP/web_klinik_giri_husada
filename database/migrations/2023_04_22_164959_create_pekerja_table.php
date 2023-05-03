@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('pekerja_nama', 50);
             $table->string('pekerja_nowa', 13);
             $table->string('pekerja_alamat', 100);
-            $table->string('pekerja_foto', 50);
+            $table->string('pekerja_foto', 50)->nullable();
             $table->tinyInteger('pekerja_idkategori')->index('pekerja_idkategori');
         });
     }

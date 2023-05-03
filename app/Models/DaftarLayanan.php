@@ -15,11 +15,12 @@ class DaftarLayanan extends Model
     protected $fillable = [
         'daftar_tanggal',
         'daftar_status',
+        'daftar_nomor',
         'daftar_idpasien',
         'daftar_idjenis',
     ];
 
-    public function jenislayanan()
+    public function jenis_layanan()
     {
         return $this->hasMany(JenisLayanan::class, 'jenis_id', 'daftar_idjenis');
     }
