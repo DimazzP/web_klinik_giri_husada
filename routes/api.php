@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\DaftarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/auth/register', [AuthController::class, 'registerPasien']);
 Route::post('/auth/login', [AuthController::class, 'loginPasien']);
 Route::post('/auth/logout', [AuthController::class, 'logoutPasien'])->middleware(['auth:sanctum', 'abilities:pasien']);
-Route::apiResource('/account', AccountController::class)->middleware(['auth:sanctum', 'abilities:pasien']);
+// Route::apiResource('/account', AccountController::class)->middleware(['auth:sanctum', 'abilities:pasien']);
+Route::middleware(['auth:sanctum', 'abilities:pasien'])->group(function () {
+    Route::post('/daftar', [DaftarController::class, 'store']);
+    Route::get('/daftar/{id}', [DaftarController::class, 'show']);
+    // Route::get('/api/pasien/{id}', function (string $id) {
+    //     return new MyPasienResource(MyPasien::findOrFail($id));
+    // });
+});

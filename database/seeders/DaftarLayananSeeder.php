@@ -1,0 +1,26 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class DaftarLayananSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        DB::table('daftar_layanan')->insert([
+            [
+                'daftar_tanggal' => '2023/05/24',
+                'daftar_status' => 'BERLANGSUNG',
+                'daftar_nomor' => 1,
+                'daftar_idpasien' => 1,
+                'daftar_idjenis' => 1,
+            ],
+        ]);
+    }
+}
