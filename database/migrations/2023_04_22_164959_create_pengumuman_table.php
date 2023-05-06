@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('pengumuman', function (Blueprint $table) {
             $table->integer('pengumuman_id', true);
-            $table->dateTime('pengumuman_tanggal');
-            $table->string('pengumuman_judul', 100);
-            $table->string('pengumuman_gambar', 50);
+            $table->string('pengumuman_judul');
             $table->text('pengumuman_deskripsi');
+            $table->date('pengumuman_tanggal');
+            $table->enum('pengumuman_status', ['publish', 'draft'])->default('draft');
+            $table->string('pengumuman_gambar');
         });
     }
 
