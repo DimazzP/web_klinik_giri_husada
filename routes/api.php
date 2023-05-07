@@ -27,7 +27,4 @@ Route::post('/auth/logout', [AuthController::class, 'logoutPasien'])->middleware
 Route::middleware(['auth:sanctum', 'abilities:pasien'])->group(function () {
     Route::post('/daftar', [DaftarController::class, 'store']);
     Route::get('/daftar/{id}', [DaftarController::class, 'show']);
-    // Route::get('/api/pasien/{id}', function (string $id) {
-    //     return new MyPasienResource(MyPasien::findOrFail($id));
-    // });
 });
