@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\ModelLayanan;
 use Illuminate\Http\Request;
 
@@ -11,8 +12,8 @@ class LayananController extends Controller
      */
     public function index()
     {
-        $daftar_layanan = ModelLayanan::all();
-        return view('tampilLayanan');
+        // $daftar_layanan = ModelLayanan::all();
+        // return view('tampilLayanan');
 
     }
 

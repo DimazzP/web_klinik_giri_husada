@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\DaftarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\JenisLayananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,6 @@ Route::post('/auth/logout', [AuthController::class, 'logoutPasien'])->middleware
 Route::middleware(['auth:sanctum', 'abilities:pasien'])->group(function () {
     Route::post('/daftar', [DaftarController::class, 'store']);
     Route::get('/daftar/{id}', [DaftarController::class, 'show']);
+    Route::get('/daftar/pasien/{id}', [DaftarController::class, 'show_pasien']);
+    Route::get('/layanan/{id}/{date}', [JenisLayananController::class, 'show']);
 });
