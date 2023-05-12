@@ -14,12 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pengumuman', function (Blueprint $table) {
-            $table->integer('pengumuman_id', true);
+            $table->integer('id', true);
             $table->string('pengumuman_judul');
             $table->text('pengumuman_deskripsi');
             $table->date('pengumuman_tanggal');
             $table->enum('pengumuman_status', ['aktif', 'tidak_aktif'])->default('tidak_aktif');
             $table->string('pengumuman_gambar');
+            $table->date('updated_at');
+            $table->date('created_at');
         });
     }
 
