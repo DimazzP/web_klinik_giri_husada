@@ -29,6 +29,33 @@ class DaftarController extends Controller
     public function show($id)
     {
     }
+
+    public function showTime($idpasien, $date, $idjenis)
+    {
+        $daftar = DaftarLayanan::join('jenis_layanan', 'jenis_id', '=', 'daftar_layanan.daftar_idjenis')
+            ->join('pekerja', 'jenis_iddokter', '=', 'pekerja_id')
+            ->select('daftar_id', 'daftar_tanggal', 'daftar_status', 'daftar_nomor', 'jenis_layanan', 'pekerja_nama')
+            ->where('daftar_tanggal', 'LIKE', $date . '%')
+            ->where('daftar_idjenis', '=', $idjenis)
+            ->where('daftar_status', '=', 'BERLANGSUNG')
+            ->orWhere(function ($query) use ($idpasien, $idjenis, $date) {
+                $query->where('daftar_idpasien', '=', $idpasien)
+                    ->where('daftar_tanggal', 'LIKE', $date . '%')
+                    ->where('daftar_status', '=', 'BERLANGSUNG');
+            })
+            // ->orWhere('daftar_idpasien', '=', $idpasien)
+            // ->orWhere()
+            ->get();
+
+        // ->orderBy('daftar_id', 'desc')
+        return response()->json([
+            'status' => 200,
+            'title' => 'Berhasil Ditampilkan',
+            'message' => "Anda berhasil menampilkan data ke layarku.",
+            'data' => $daftar,
+        ], 200);
+    }
+
     public function showPasien($id)
     {
         // $daftar = DaftarLayanan::where('daftar_idpasien', 1)->with('jenislayanan')->get();
@@ -59,7 +86,7 @@ class DaftarController extends Controller
     {
         $data = DaftarLayanan::where('daftar_idpasien', $request->daftar_idpasien)
             ->where('daftar_idjenis', $request->daftar_idjenis)
-            ->where('daftar_tanggal', $request->daftar_tanggal)
+            ->where('daftar_status', '=', 'BERLANGSUNG')
             ->first();
         if ($data === null) {
             $daftar = DaftarLayanan::create([

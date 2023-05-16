@@ -31,4 +31,5 @@ Route::middleware(['auth:sanctum', 'abilities:pasien'])->group(function () {
     Route::get('/daftar/pasien/{id}', [DaftarController::class, 'showPasien']);
     Route::get('/layanan/{id}/{date}', [JenisLayananController::class, 'show']);
     Route::get('/daftar/pasien/{idpasien}/{idlayanan}/{date}', [DaftarController::class, 'showCheck']);
+    Route::get('/daftar/jam/pasien/{idpasien}/tanggal/{date}/layanan/{idjenis}', [DaftarController::class, 'showTime']);
 });

@@ -13,12 +13,13 @@ class JenisLayananController extends Controller
     {
         $jenis = JenisLayanan::join('pekerja', 'pekerja_id', '=', 'jenis_layanan.jenis_iddokter')
             // ->join('daftar_layanan', 'daftar_id', '=', 'daftar_layanan.daftar_idjenis')
-            ->select('jenis_id', 'jenis_layanan', 'pekerja_nama')->where('jenis_id', $id)
+            ->select('jenis_id', 'jenis_layanan', 'pekerja_nama')
+            ->where('jenis_id', $id)
             // ->orderBy('daftar_id', 'desc')
             ->first();
         $daftar = DaftarLayanan::select('daftar_nomor')
             ->where('daftar_idjenis', $id)
-            ->where('daftar_tanggal', $date)
+            ->where('daftar_tanggal', 'LIKE', $date . '%')
             ->orderBy('daftar_id', 'desc')->first();
         return response()->json([
             'status' => 200,

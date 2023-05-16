@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('daftar_layanan', function (Blueprint $table) {
             $table->integer('daftar_id', true);
-            $table->date('daftar_tanggal');
+            $table->dateTime('daftar_tanggal');
             $table->string('daftar_status', 15);
             $table->tinyInteger('daftar_nomor');
             $table->integer('daftar_idpasien')->index('daftar_idpasien');
