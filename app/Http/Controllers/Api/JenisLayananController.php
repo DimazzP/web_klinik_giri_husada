@@ -17,16 +17,19 @@ class JenisLayananController extends Controller
             ->where('jenis_id', $id)
             // ->orderBy('daftar_id', 'desc')
             ->first();
-        $daftar = DaftarLayanan::select('daftar_nomor')
+        $daftar = DaftarLayanan::select('daftar_tanggal')
             ->where('daftar_idjenis', $id)
             ->where('daftar_tanggal', 'LIKE', $date . '%')
-            ->orderBy('daftar_id', 'desc')->first();
+            ->where('daftar_status', '=', 'BERLANGSUNG')
+            ->orderBy('daftar_id', 'desc')->count();
         return response()->json([
             'status' => 200,
             'title' => 'Berhasil Ditampilkan',
             'message' => "Berhasil menampilkan ke layar.",
             'data' => $jenis,
-            'antrian' => $daftar
+            'antrian' => [
+                'daftar_nomor' => $daftar,
+            ]
         ], 200);
     }
 }

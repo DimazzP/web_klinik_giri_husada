@@ -17,7 +17,6 @@ class DaftarLayananSeeder extends Seeder
             [
                 'daftar_tanggal' => '2023/05/24',
                 'daftar_status' => 'BERLANGSUNG',
-                'daftar_nomor' => 1,
                 'daftar_idpasien' => 1,
                 'daftar_idjenis' => 1,
             ],

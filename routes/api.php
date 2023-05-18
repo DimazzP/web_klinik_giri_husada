@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\DaftarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\JenisLayananController;
+use App\Http\Controllers\Api\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +25,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/auth/register', [AuthController::class, 'registerPasien']);
 Route::post('/auth/login', [AuthController::class, 'loginPasien']);
 Route::post('/auth/logout', [AuthController::class, 'logoutPasien'])->middleware(['auth:sanctum', 'abilities:pasien']);
-// Route::apiResource('/account', AccountController::class)->middleware(['auth:sanctum', 'abilities:pasien']);
 Route::middleware(['auth:sanctum', 'abilities:pasien'])->group(function () {
+    Route::post('/user/ubah/',  [ProfileController::class, 'store']);
     Route::post('/daftar', [DaftarController::class, 'store']);
     Route::get('/daftar/{id}', [DaftarController::class, 'show']);
+    Route::put('/daftar/batal/{iddaftar}', [DaftarController::class, 'batal']);
     Route::get('/daftar/pasien/{id}', [DaftarController::class, 'showPasien']);
     Route::get('/layanan/{id}/{date}', [JenisLayananController::class, 'show']);
     Route::get('/daftar/pasien/{idpasien}/{idlayanan}/{date}', [DaftarController::class, 'showCheck']);

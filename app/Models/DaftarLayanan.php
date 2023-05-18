@@ -15,7 +15,6 @@ class DaftarLayanan extends Model
     protected $fillable = [
         'daftar_tanggal',
         'daftar_status',
-        'daftar_nomor',
         'daftar_idpasien',
         'daftar_idjenis',
     ];

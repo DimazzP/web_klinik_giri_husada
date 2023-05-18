@@ -17,5 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/layanan', LayananController::class);
+// Route::resource('/layanan', LayananController::class);
 // Route::get('/layanan', [LayananController::class, 'index']);

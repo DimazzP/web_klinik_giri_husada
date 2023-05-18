@@ -17,7 +17,6 @@ return new class extends Migration
             $table->integer('daftar_id', true);
             $table->dateTime('daftar_tanggal');
             $table->string('daftar_status', 15);
-            $table->tinyInteger('daftar_nomor');
             $table->integer('daftar_idpasien')->index('daftar_idpasien');
             $table->integer('daftar_idjenis')->index('daftar_idjenis');
         });

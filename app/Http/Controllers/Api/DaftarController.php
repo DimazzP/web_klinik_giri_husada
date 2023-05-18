@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\DaftarLayanan;
 use App\Models\JenisLayanan;
 use App\Models\Pekerja;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class DaftarController extends Controller
 {
@@ -34,7 +35,7 @@ class DaftarController extends Controller
     {
         $daftar = DaftarLayanan::join('jenis_layanan', 'jenis_id', '=', 'daftar_layanan.daftar_idjenis')
             ->join('pekerja', 'jenis_iddokter', '=', 'pekerja_id')
-            ->select('daftar_id', 'daftar_tanggal', 'daftar_status', 'daftar_nomor', 'jenis_layanan', 'pekerja_nama')
+            ->select('daftar_id', 'daftar_tanggal', 'daftar_status', 'jenis_layanan', 'pekerja_nama')
             ->where('daftar_tanggal', 'LIKE', $date . '%')
             ->where('daftar_idjenis', '=', $idjenis)
             ->where('daftar_status', '=', 'BERLANGSUNG')
@@ -61,7 +62,7 @@ class DaftarController extends Controller
         // $daftar = DaftarLayanan::where('daftar_idpasien', 1)->with('jenislayanan')->get();
         $daftar = DaftarLayanan::join('jenis_layanan', 'jenis_id', '=', 'daftar_layanan.daftar_idjenis')
             ->join('pekerja', 'jenis_iddokter', '=', 'pekerja_id')
-            ->select('daftar_id', 'daftar_tanggal', 'daftar_status', 'daftar_nomor', 'jenis_layanan', 'pekerja_nama')
+            ->select('daftar_id', 'daftar_tanggal', 'daftar_status', 'jenis_layanan', 'pekerja_nama')
             ->where('daftar_idpasien', $id)
             ->orderBy('daftar_id', 'desc')
             ->get();
@@ -92,7 +93,6 @@ class DaftarController extends Controller
             $daftar = DaftarLayanan::create([
                 'daftar_tanggal' => $request->daftar_tanggal,
                 'daftar_status' => $request->daftar_status,
-                'daftar_nomor' => $request->daftar_nomor,
                 'daftar_idpasien' => $request->daftar_idpasien,
                 'daftar_idjenis' => $request->daftar_idjenis,
             ]);
@@ -108,7 +108,6 @@ class DaftarController extends Controller
                     'daftar_id' => $daftar->daftar_id,
                     'daftar_tanggal' => $daftar->daftar_tanggal,
                     'daftar_status' => $daftar->daftar_status,
-                    'daftar_nomor' => intval($daftar->daftar_nomor),
                     'jenis_layanan' => $jenis->jenis_layanan,
                     'pekerja_nama' => $pekerja->pekerja_nama,
                 ]],
@@ -120,6 +119,36 @@ class DaftarController extends Controller
                 'message' => 'Anda sudah mendaftarkan diri anda pada layanan ini sebelumnya. Periksa kembali riwayat pendaftaran anda.',
                 'data' => [],
             ], 409);
+        }
+    }
+
+    public function batal($iddaftar)
+    {
+        try {
+            $daftar = DaftarLayanan::findOrFail($iddaftar);
+            if ($daftar->daftar_status == 'BERLANGSUNG') {
+                $daftar->daftar_status = 'BATAL';
+                $daftar->update();
+                return response()->json([
+                    'status' => 200,
+                    'title' => 'Status Berhasil Diubah',
+                    'message' => "Anda berhasil membatalkan status pendaftaran anda.",
+                    'data' => [],
+                ], 200);
+            }
+            return response()->json([
+                'status' => 400,
+                'title' => 'Tidak Bisa Membatalkan',
+                'message' => "Anda tidak bisa membatalkan nomor antrian.",
+                'data' => [],
+            ], 400);
+        } catch (ModelNotFoundException) {
+            return response()->json([
+                'status' => 404,
+                'title' => 'Data Tidak Ada',
+                'message' => "Data yang anda cari tidak ditemukan.",
+                'data' => [],
+            ], 404);
         }
     }
 }
