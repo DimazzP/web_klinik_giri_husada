@@ -53,6 +53,11 @@ class ProfileController extends Controller
                 $profile->update();
                 $output = 'Alamat';
                 break;
+            case '5':
+                $user->user_sandi = bcrypt($value);
+                $user->update();
+                $output = 'Password';
+                break;
         }
         $data = new UserResource($user);
         return response()->json([
