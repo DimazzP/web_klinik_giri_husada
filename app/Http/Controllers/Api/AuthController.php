@@ -44,6 +44,7 @@ class AuthController extends Controller
             ], 400);
         } else {
             $user = User::where('user_nowa', $request->input('user_nowa'))->first();
+
             $myuser = $request->user();
 
 
@@ -73,6 +74,16 @@ class AuthController extends Controller
 
         try {
 
+            $user = User::where('user_nowa', $request->input('user_nowa'))->first();
+            if (!empty($user)) {
+                return response()->json([
+                    'status' => 400,
+                    'title' => 'Nomor Telepon Tidak Bisa Digunakan',
+                    'message' => "Nomor whatsapp yang anda masukkan tidak bisa didaftarkan. Coba gunakan nomor whatsapp lain.",
+                    'data' => null,
+                    'token' => null,
+                ], 400);
+            }
             $credentials = Validator::make($request->all(), [
                 'user_nowa' => ['required', 'string', 'max:13', 'min:12', Rule::unique(User::class),],
                 'password' => ['required', 'min:8'],

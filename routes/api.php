@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\JenisLayananController;
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +24,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 // Route::get('/auth/register', [AuthController::class, 'getData'])->middleware(['auth:sanctum', 'abilities:pasien']);
 Route::post('/auth/register', [AuthController::class, 'registerPasien']);
+Route::post('/reset/password/nomor', [ResetPasswordController::class, 'checkNomor']);
 Route::post('/auth/login', [AuthController::class, 'loginPasien']);
 Route::post('/auth/logout', [AuthController::class, 'logoutPasien'])->middleware(['auth:sanctum', 'abilities:pasien']);
 Route::middleware(['auth:sanctum', 'abilities:pasien'])->group(function () {
     Route::post('/user/ubah/',  [ProfileController::class, 'store']);
+    Route::post('/reset/password/nomor/ubah', [ResetPasswordController::class, 'ubahPassword']);
     Route::post('/daftar', [DaftarController::class, 'store']);
     Route::get('/daftar/{id}', [DaftarController::class, 'show']);
     Route::put('/daftar/batal/{iddaftar}', [DaftarController::class, 'batal']);
