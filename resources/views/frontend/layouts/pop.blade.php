@@ -6,7 +6,7 @@
     </head>
     <body>
         <div class="container">
-            @yield('content')
+
             
         </div>
 
@@ -18,13 +18,18 @@
                 <div class = "container" style"">
                     <div class="popup-content">
                     <img class ="close-btn" src="{{ asset('frontend/cancel.png') }}" alt="">
-                                @foreach ($berita as $berita)
+                    @if(isset($notification))
+                        <div class="alert alert-warning">
+                        {{ $notification }}
+                        </div>
+                    @endif
+                                @foreach ($pengumumans as $berita)
                     <div class="col-md-6 container">
                         <div class="card mb-4">
-                            <img src="{{ asset($berita->gambar) }}" class="card-img-top" alt="{{ $berita->judul }}">
+                            <img src="{{ asset('storage/pengumuman/'.$berita->pengumuman_gambar) }}" class="card-img-top" alt="{{ $berita->pengumuman_judul }}">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $berita->judul }}</h5>
-                                <p class="card-text">{{ $berita->deskripsi }}</p>
+                                <h5 class="card-title">{{ $berita->pengumuman_judul }}</h5>
+                                <p class="card-text">{{ $berita->pengumuman_deskripsi }}</p>
                                 <button id="btn-test" class="btn btn-primary">Lihat Detail</button>
                             </div>
                         </div>

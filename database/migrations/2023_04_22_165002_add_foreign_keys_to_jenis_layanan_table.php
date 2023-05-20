@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('jenis_layanan', function (Blueprint $table) {
-            $table->foreign(['jenis_iddokter'], 'jenis_layanan_ibfk_1')->references(['pekerja_id'])->on('pekerja')->onUpdate('CASCADE');
+            $table->foreign(['jenis_iddokter'], 'jenis_layanan_ibfk_1')->references(['pekerja_id'])->on('pekerja')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

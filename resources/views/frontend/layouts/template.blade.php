@@ -42,7 +42,8 @@
 @include('frontend/layouts.navbar')
   
   @yield('content')
-  @yield('content2')
+  @yield('content23')
+
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">

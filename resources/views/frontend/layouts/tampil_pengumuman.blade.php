@@ -2,7 +2,7 @@
 
 
 
-@section('content2')
+@section('content14')
 <main id="main" class="main">
 <div class="pagetitle">
   <h1>Dashboard</h1>
@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="row row-cards">
-        @foreach ($berita as $berita)
+        @foreach ($pengumuman as $berita)
         
         <div class="col-lg-8">
       <div class="row row-cards">

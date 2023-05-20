@@ -28,5 +28,6 @@ class DaftarLayananSeeder extends Seeder
 // php artisan db:seed --class=KategoriKerjaSeeder
 // php artisan db:seed --class=PekerjaSeeder
 // php artisan db:seed --class=JenisLayananSeeder
+// php artisan db:seed --class=UserSeeder
 //masukkan user dulu
 // php artisan db:seed --class=DaftarLayananSeeder

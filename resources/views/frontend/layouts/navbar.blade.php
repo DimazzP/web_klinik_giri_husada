@@ -1,5 +1,5 @@
 {{-- @extends('frontend/layouts.template')   --}}
-{{-- @section('content') --}}
+{{-- @section('content23') --}}
  
 
 <!-- ======= Top Bar ======= -->
@@ -53,7 +53,7 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="{{route('login')}}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Masuk</span></a>
+      <a href="{{route('loginlagi')}}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Masuk</span></a>
 
     </div>
   </header><!-- End Header -->

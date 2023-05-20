@@ -1,5 +1,5 @@
 @extends('frontend/layouts.pop')
-@section('content1')
+@section('content13')
 <div class="popup">
     <h2>Popup Content</h2>
     <p>This is the content of the popup.</p>

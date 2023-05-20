@@ -18,7 +18,30 @@ class KategoriKerjaSeeder extends Seeder
             [
                 'katekerja_nama' => 'Dokter',
             ],
-
+            [
+                'katekerja_nama' => 'Perawat',
+            ],
+            [
+                'katekerja_nama' => 'Analisis',
+            ],
+            [
+                'katekerja_nama' => 'Gizi',
+            ],
+            [
+                'katekerja_nama' => 'Admin',
+            ],
+            [
+                'katekerja_nama' => 'Farmasi',
+            ],
+            [
+                'katekerja_nama' => 'Apoteker',
+            ],
+            [
+                'katekerja_nama' => 'Cleaning Service',
+            ],
+            [
+                'katekerja_nama' => 'Bidan',
+            ],
         ]);
     }
 }

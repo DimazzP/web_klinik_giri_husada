@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('daftar_layanan', function (Blueprint $table) {
-            $table->foreign(['daftar_idjenis'], 'daftar_layanan_ibfk_2')->references(['jenis_id'])->on('jenis_layanan')->onUpdate('CASCADE');
-            $table->foreign(['daftar_idpasien'], 'daftar_layanan_ibfk_1')->references(['pasien_id'])->on('pasien')->onUpdate('CASCADE');
+            $table->foreign(['daftar_idjenis'], 'daftar_layanan_ibfk_2')->references(['jenis_id'])->on('jenis_layanan')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign(['daftar_idpasien'], 'daftar_layanan_ibfk_1')->references(['pasien_id'])->on('pasien')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign(['user_idkategori'], 'users_ibfk_1')->references(['kateuser_id'])->on('kategori_user');
-            $table->foreign(['user_idpasien'], 'users_ibfk_2')->references(['pasien_id'])->on('pasien');
+            $table->foreign(['user_idkategori'], 'users_ibfk_1')->references(['kateuser_id'])->on('kategori_user')->onDelete('CASCADE');
+            $table->foreign(['user_idpasien'], 'users_ibfk_2')->references(['pasien_id'])->on('pasien')->onDelete('CASCADE');
             $table->string('remember_token', 64)->change();
         });
     }

@@ -1,3 +1,4 @@
+
 @extends('frontend/layouts.pop')
 @extends('frontend/layouts.template')
 
@@ -84,31 +85,48 @@
 <div class="container">
     <h1>Pengumuman</h1>
     <hr>
-    <div class="table-responsive">
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Judul</th>
-                    <th>Gambar</th>
-                    <th>Deskripsi</th>
-                    <th>Tanggal Dibuat</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($berita as $item)
-                <tr>
-                    <td>{{ $item->judul }}</td>
-                    <td>
-                        <a href="{{ asset($item->gambar) }}" data-magnify>
-                            <img src="{{ asset($item->gambar) }}" alt="{{ $item->judul }}" width="100">
-                        </a>
-                    </td>
-                    <td>{{ $item->deskripsi }}</td>
-                    <td>{{ $item->created_at->format('d/m/Y H:i') }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+    <div class="row row-cards">
+    @if(isset($notification))
+    <div class="alert alert-warning">
+        {{ $notification }}
+    </div>
+      @endif
+      <div class="container">
+    <div class="row">
+        @foreach ($pengumuman as $item)
+            <div class="col-lg-4 mb-4">
+                <div class="card position-relative">
+                    <div class="card-img-top-container" >
+                        <img src="{{ asset('/storage/pengumuman/'.$item->pengumuman_gambar) }}" class="card-img-top" alt="{{ $item->pengumuman_judul }}" style="width: 100%; height: 100%;">
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="d-flex align-items-center mb-2">
+                                <label for="judul" class="mr-2 font-weight-bold">Judul :</label>
+                                <h5 class="card-title mb-0">{{ $item->pengumuman_judul }}</h5>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="deskripsi" class="font-weight-bold">Deskripsi :</label>
+                            <p class="card-text font-weight-bold">{{ $item->pengumuman_deskripsi }}</p>
+                        </div>
+                        <div class="form-group">
+                            <div class="d-flex align-items-center mb-2">
+                                <label for="tanggal" class="mr-2 font-weight-bold">Tanggal :</label>
+                                <span class="card-title mb-0">{{ $item->pengumuman_tanggal }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</div>
+
+
+
+
+        
     </div>
 </div>
 

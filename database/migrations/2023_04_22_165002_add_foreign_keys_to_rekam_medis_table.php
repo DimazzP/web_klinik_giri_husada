@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('rekam_medis', function (Blueprint $table) {
-            $table->foreign(['rekam_idlayanan'], 'rekam_medis_ibfk_1')->references(['daftar_id'])->on('daftar_layanan');
+            $table->foreign(['rekam_idlayanan'], 'rekam_medis_ibfk_1')->references(['daftar_id'])->on('daftar_layanan')->onDelete('CASCADE');
         });
     }
 
