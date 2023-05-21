@@ -45,11 +45,16 @@
           </div>
           <div class="card-footer">
             <a class="btn btn-primary" href="{{ route('pasiens.tampil') }}">Kembali</a>
-            <!-- <button onclick="printUser({{ $pasiens->pasien_id }})" class="btn btn-success">Cetak Kartu Berobat</button> -->
+            <button onclick="printPasien({{ $pasiens->pasien_id }})" class="btn btn-success">Cetak Kartu Berobat</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </main>
+<script>
+    function printPasien(pasien_Id) {
+        window.open('/cetak_pasien/' + pasien_Id, '_blank');
+    }
+</script>
 @endsection

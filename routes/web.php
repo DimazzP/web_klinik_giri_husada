@@ -11,6 +11,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PekerjaController;
 use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\CetakUserController;
+use App\Http\Controllers\CetakPasienController;
 use App\Http\Controllers\GajiController;
 use App\Http\Controllers\DaftarLayananController;
 use App\Http\Controllers\DashboardController;
@@ -70,7 +71,7 @@ Route::put('/patients/{pasien}', [PatientController::class, 'update'])->middlewa
 
 
 Route::get('/cetak_user/{rekam_Id}', [CetakUserController::class, 'cetakUser'])->name('rekam_medis.cetakUser');
-
+Route::get('/cetak_pasien/{pasien_Id}', [CetakPasienController::class, 'cetak'])->name('pasiens.cetak');
 
 
 Route::resource('rekam_medis', RekamMedisController::class)->middleware('auth', 'verified');
