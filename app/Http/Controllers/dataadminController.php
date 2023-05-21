@@ -24,13 +24,17 @@ class dataadminController extends Controller
         $katakunci = $request->katakunci;
         $jumlahbaris = 3;
         if (strlen($katakunci)) {
-            $data = User::where('user_id', 'like', "%$katakunci%")
-            ->orWhere('user_nowa', 'like', "%$katakunci%")
-            // ->orWhere('phone', 'like', "%$katakunci%")
-            // ->orWhere('password', 'like', "%$katakunci%")
-            ->paginate($jumlahbaris);
+            $data = User::where(function ($query) use ($katakunci) {
+                $query->where('user_id', 'like', '%' . $katakunci . '%')
+                    ->where('user_idkategori', '=',  '1');
+            })->orWhere(function ($query) use ($katakunci) {
+                $query->where('user_nowa', 'like', '%' . $katakunci . '%')
+                    ->where('user_idkategori', '=',  '1');
+            })->paginate($jumlahbaris);
         } else {
-            $data = User::orderBy('user_id', 'desc')->paginate($jumlahbaris);
+            $data = User::orderBy('user_id', 'desc')
+                ->where('user_idkategori', '1')
+                ->paginate($jumlahbaris);
         }
         return view('Backend.dataadmin.data-admin')->with('data', $data);
     }
@@ -60,10 +64,10 @@ class dataadminController extends Controller
             'user_nowa' => 'required|unique:users,user_nowa|min:12|max:13',
             'user_sandi' => 'required|min:8',
             'confirmed', Rules\Password::defaults(),
-        ],[
-            'user_nowa.required'=>'NOMOR WHATSAPP WAJIB DIISI',
-            'user_sandi.required'=>'KATA SANDI WAJIB DIISI',
-            'user_nowa.unique' =>'NOMOR WHATSAPP SUDAH TERDAFTAR',
+        ], [
+            'user_nowa.required' => 'NOMOR WHATSAPP WAJIB DIISI',
+            'user_sandi.required' => 'KATA SANDI WAJIB DIISI',
+            'user_nowa.unique' => 'NOMOR WHATSAPP SUDAH TERDAFTAR',
             'user_nowa' => [
                 'min' => 'NOMOR WHATSAPP MINIMAL 12 ANGKA',
                 'max' => 'NOMOR WHATSAPP MINIMAL 12 ANGKA'
@@ -119,15 +123,15 @@ class dataadminController extends Controller
                 'min' => 'SANDI WAJIB 8 KARAKTER',
             ],
         ]);
-    
+
         $data = [
             'user_nowa' => $request->user_nowa,
         ];
-    
+
         if ($request->filled('user_sandi')) { // Cek apakah password diisi atau tidak
             $data['user_sandi'] = Hash::make($request->user_sandi);
         }
-    
+
         User::where('user_id', $user_id)->update($data);
         return redirect()->to('dataadmin')->with('success', 'DATA BERHASIL DIPERBARUI');
     }
