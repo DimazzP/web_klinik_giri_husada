@@ -69,4 +69,16 @@ class PatientController extends Controller
         return redirect()->route('pasiens.tampil')
             ->with('success', 'Pasien berhasil dihapus.');
     }
+
+    public function search(Request $request)
+    {
+        $cari = $request->input('cari');
+    
+        $pasiens = Pasien::where('pasien_nik', 'LIKE', '%' . $cari . '%')
+            ->orWhere('pasien_nama', 'LIKE', '%' . $cari . '%')
+            ->get();
+    
+        return view('pasiens.tampil', compact('pasiens'));
+    }
+
 }

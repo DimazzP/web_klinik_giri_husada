@@ -72,10 +72,8 @@
                                 <label for="daftar_status">Status:</label>
                                 </br>
                                 <select name="daftar_status" id="stts">
-                                    <option value="pilih">Pilih Status</option>
-                                    
+                                    <option value="pilih">Pilih Status</option>                      
                                     <option value="BERLANGSUNG">BERLANGSUNG</option>
-                                    <option value="BATAL">BATAL</option>
                                     
                                 </select>
                             </div>

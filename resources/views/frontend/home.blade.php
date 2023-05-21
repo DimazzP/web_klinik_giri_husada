@@ -182,10 +182,11 @@
               <li><i class="bi bi-check-circle"></i> Login dan Menambahkan Akun.</li>
               <li><i class="bi bi-check-circle"></i> Pengelompokan Data Pasien</li>
               <li><i class="bi bi-check-circle"></i> Riwayat Data Pasien</li>
+              <li><i class="bi bi-check-circle"></i> Kelola Data Admin</li>
               <li><i class="bi bi-check-circle"></i> Kelola Data Pelayanan</li>
-              <li><i class="bi bi-check-circle"></i> Kelola Laporan Pemasukan & Pengeluaran</li>
+              <li><i class="bi bi-check-circle"></i> Kelola Data Pekerja</li>
+              <li><i class="bi bi-check-circle"></i> Kelola Data Gaji</li>
               <li><i class="bi bi-check-circle"></i> Rekam Medis</li>
-              <li><i class="bi bi-check-circle"></i> Chat</li>
             </ul>
             <p>
               Dengan adanya sistem website klinik online dapat membantu rumah pihak klinik dalam memberikan layanan yang baik dan tepat waktu kepada pasien melalui akses informasi 
@@ -233,7 +234,7 @@
     </section><!-- End Services Section -->
 
     <!-- ======= Doctors Section ======= -->
-    <section id="doctors" class="doctors section-bg">
+    <!-- <section id="doctors" class="doctors section-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -300,8 +301,8 @@
 
 
 </div>
-<!-- ======= Perawat ======= -->
-<div class="section-title">
+======= Perawat ======= -->
+<!-- <div class="section-title">
       <h2>Perawat</h2>
       <p></p>
     </div>
@@ -402,33 +403,33 @@
           </div>
         </div>
       </div>
-<!-- Perawat -->
+Perawat
 
       </div>
-    </section><!-- End Doctors Section -->
+    </section>End Doctors Section -->
 
     <!-- ======= Gallery Section ======= -->
-    <section id="gallery" class="gallery">
-      <div class="container" data-aos="fade-up">
+    <!-- <section id="gallery" class="gallery">
+      <div class="container" data-aos="fade-up"> -->
 
-        <div class="section-title">
+        <!-- <div class="section-title">
         <h2>Galeri Layanan Kesehatan</h2>
           <p>Berikut adalah dokumentasi layanan kesehatan dari Klinik Giri Husada sebagai penunjang untuk Anda dalam melakukan pengobatan.</p>
-        </div>
+        </div> -->
 
-        <div class="gallery-slider swiper">
+        <!-- <div class="gallery-slider swiper">
           <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><a class="gallery-lightbox" href="frontend/assets/img/gallery/gallery-1.jpg"><img src="frontend/assets/img/gallery/gallery-1.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="frontend/assets/img/gallery/gallery-2.jpg"><img src="frontend/assets/img/gallery/gallery-2.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="frontend/assets/img/gallery/gallery-3.jpg"><img src="frontend/assets/img/gallery/gallery-3.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="frontend/assets/img/gallery/gallery-4.jpg"><img src="frontend/assets/img/gallery/gallery-4.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="frontend/assets/img/gallery/gallery-5.jpg"><img src="frontend/assets/img/gallery/gallery-5.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="frontend/assets/img/gallery/gallery-6.jpg"><img src="frontend/assets/img/gallery/gallery-6.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="frontend/assets/img/gallery/gallery-7.jpg"><img src="frontend/assets/img/gallery/gallery-7.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="frontend/assets/img/gallery/gallery-8.jpg"><img src="frontend/assets/img/gallery/gallery-8.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="gallery-lightbox" ><img src="frontend/assets/img/gallery/gallery-1.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="gallery-lightbox" ><img src="frontend/assets/img/gallery/gallery-2.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="gallery-lightbox" ><img src="frontend/assets/img/gallery/gallery-3.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="gallery-lightbox" ><img src="frontend/assets/img/gallery/gallery-4.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="gallery-lightbox" ><img src="frontend/assets/img/gallery/gallery-5.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="gallery-lightbox" ><img src="frontend/assets/img/gallery/gallery-6.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="gallery-lightbox" ><img src="frontend/assets/img/gallery/gallery-7.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="gallery-lightbox" ><img src="frontend/assets/img/gallery/gallery-8.jpg" class="img-fluid" alt=""></a></div>
           </div>
           <div class="swiper-pagination"></div>
-        </div>
+        </div> -->
 
       </div>
     </section><!-- End Gallery Section -->

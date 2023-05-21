@@ -16,6 +16,15 @@
             <div class="pull-left">
                 <h2>Data Pasien</h2>
             </div>
+
+<!-- FORM PENCARIAN -->
+<div class="pb-3">
+    <form class="d-flex" action="{{ route('pasiens.cari') }}" method="get">
+        <input class="form-control me-1" type="search" name="cari" value="{{ request('cari') }}" placeholder="Masukkan NIK atau Nama Pasien" aria-label="Search">
+        <button class="btn btn-secondary" type="submit">Cari</button>
+    </form>
+</div>
+
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('pasiens.create') }}">+ Tambah Pasien Baru</a>
             </div>

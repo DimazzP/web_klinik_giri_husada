@@ -66,6 +66,7 @@ Route::get('/patients/{pasien}', [PatientController::class, 'show'])->middleware
 Route::get('/patients/{pasien}/edit', [PatientController::class, 'edit'])->middleware('auth', 'verified')->name('pasiens.edit');
 Route::delete('patients/{pasien}', [PatientController::class, 'destroy'])->middleware('auth', 'verified')->name('pasiens.destroy');
 Route::put('/patients/{pasien}', [PatientController::class, 'update'])->middleware('auth', 'verified')->name('pasiens.update');
+Route::get('/pasiens/cari', [PatientController::class, 'search'])->name('pasiens.cari');
 
 
 
@@ -76,7 +77,8 @@ Route::get('/cetak_pasien/{pasien_Id}', [CetakPasienController::class, 'cetak'])
 
 Route::resource('rekam_medis', RekamMedisController::class)->middleware('auth', 'verified');
 
-Route::resource('pekerja', PekerjaController::class)->middleware('auth', 'verified');
+Route::resource('pekerja', PekerjaController::class)->middleware('auth', 'verified')->except(['show']);
+Route::get('pekerja/search', [PekerjaController::class, 'search'])->name('pekerja.search');
 
 Route::resource('gaji', GajiController::class)->middleware('auth', 'verified');
 

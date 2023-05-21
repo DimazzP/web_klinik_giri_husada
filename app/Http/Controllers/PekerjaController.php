@@ -87,4 +87,13 @@ class PekerjaController extends Controller
         $pekerja->delete();
         return redirect()->route('pekerja.index')->with('success', "Data pekerja '$pekerja_nama' berhasil dihapus.");
     }
+
+    public function search(Request $request)
+    {
+        $cari = $request->input('cari');
+
+        $pekerja = Pekerja::where('pekerja_nama', 'LIKE', '%' . $cari . '%')->get();
+
+        return view('backend.pekerja.tampil', compact('pekerja'));
+    }
 }

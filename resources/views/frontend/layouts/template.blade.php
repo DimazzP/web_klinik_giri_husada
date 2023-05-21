@@ -74,7 +74,6 @@
               <li><i class="bx bx-chevron-right"></i> <a href="#">Pengumuman</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Tentang Kami</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Jenis Layanan</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Pegawai</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Kontak</a></li>
             </ul>
           </div>
