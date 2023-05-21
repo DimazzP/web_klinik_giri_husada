@@ -37,14 +37,7 @@
         @csrf
         @method('PUT')
 
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Nama:</strong>
-                    
-                    <input type="text" name="rekam_id" value="{{ $rekammedis->rekam_id }}" class="form-control" placeholder="Nama">
-                </div>
-            </div>
+       
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Tanggal:</strong>
@@ -174,21 +167,21 @@
                 <div class="form-group">
                     <strong>Kecelakaan:</strong>
                     
-                    <input type="number" name="rekam_kecelakaan" value="{{ $rekammedis->rekam_kecelakaan }}" class="form-control" placeholder="Kecelakaan">
+                    <input type="text" name="rekam_kecelakaan" value="{{ $rekammedis->rekam_kecelakaan }}" class="form-control" placeholder="Kecelakaan">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Tenaga Medis:</strong>
                     
-                    <input type="number" name="rekam_tenagamedis" value="{{ $rekammedis->rekam_tenagamedis }}" class="form-control" placeholder="Tenaga Medis">
+                    <input type="text" name="rekam_tenagamedis" value="{{ $rekammedis->rekam_tenagamedis }}" class="form-control" placeholder="Tenaga Medis">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Statuspulang:</strong>
                     
-                    <input type="number" name="rekam_statuspulang" value="{{ $rekammedis->rekam_statuspulang }}" class="form-control" placeholder="Status Pulang">
+                    <input type="text" name="rekam_statuspulang" value="{{ $rekammedis->rekam_statuspulang }}" class="form-control" placeholder="Status Pulang">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">

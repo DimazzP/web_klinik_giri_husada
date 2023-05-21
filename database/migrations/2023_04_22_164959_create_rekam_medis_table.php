@@ -34,9 +34,9 @@ return new class extends Migration
             $table->integer('rekam_beratbadan')->nullable();
             $table->integer('rekam_lingkarperut')->nullable();
             $table->integer('rekam_imt')->nullable();
-            $table->tinyInteger('rekam_kecelakaan')->nullable();
-            $table->integer('rekam_tenagamedis')->nullable();
-            $table->tinyInteger('rekam_statuspulang')->nullable();
+            $table->text('rekam_kecelakaan')->nullable();
+            $table->text('rekam_tenagamedis')->nullable();
+            $table->text('rekam_statuspulang')->nullable();
             $table->integer('rekam_idlayanan')->index('rekam_idlayanan');
         });
     }

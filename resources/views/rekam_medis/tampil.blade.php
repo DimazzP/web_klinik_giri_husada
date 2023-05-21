@@ -3,7 +3,10 @@
 @section('content6')
 <main id="main" class="main">
 <div class="pagetitle">
-  <h1>Rekam Medis</h1>
+<div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2>Data Rekam Medis Pasien</h2>
+            </div>
   <nav>
     <ol class="breadcrumb">
       <l i class="breadcrumb-item"><a href="index.html">Home  /</a></li>
@@ -19,11 +22,7 @@
                       <button class="btn btn-secondary" type="submit">Cari</button>
                   </form>
                 </div>
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Data Pasien</h2>
-            </div>
+
 </br>
 
             <div class="pull-right">
@@ -69,6 +68,7 @@
                                    
                                     <div class="card-body">
                                         <h5 class="card-title"> {{ $rekammedis->pasien_nama }}</h5>
+                                        <p class="card-text">{{ $rekammedis->rekam_tanggal }}</p>
                                         <p class="card-text">{{ $rekammedis->pasien_alamat }}</p>
                                         <div class="d-flex justify-content-between align-items-center">
                 

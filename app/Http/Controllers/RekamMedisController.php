@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\RekamMedis;
+use App\Models\DaftarLayanan;
 
 class RekamMedisController extends Controller
 {
@@ -13,20 +14,23 @@ class RekamMedisController extends Controller
     public function index(Request $request)
     {
         $rekammedis = RekamMedis::join('daftar_layanan', 'daftar_id', '=', 'rekam_medis.rekam_idlayanan')
-            ->join('pasien', 'pasien_id', '=', 'daftar_layanan.daftar_idpasien')->get();
-
+            ->join('pasien', 'pasien_id', '=', 'daftar_layanan.daftar_idpasien');
         $cari = $request->cari;
 
         if (strlen($cari)) {
             $rekammedis = $rekammedis->where('pasien_nama', 'like', "%$cari%");
         }
-
+        $rekammedis = $rekammedis->orderBy('pasien_id', 'desc')->get();
         return view('rekam_medis.tampil', compact('rekammedis'));
+        // return view('rekam_medis.tampil', compact('rekammedis'))->with('rekammedis', $rekammedis);
+
     }
 
     public function create()
     {
-        return view('rekam_medis.tambah1');
+        $rekammedis = DaftarLayanan::with('pasien', 'jenis_layanan')->orderBy('daftar_id', 'asc')->where('daftar_status', 'BERLANGSUNG')->get();
+        // return view('backend.daftar_layanan.daftar_layanan', compact('backend'));
+        return view('rekam_medis.tambah1', compact('rekammedis'));
     }
 
     /**
@@ -35,7 +39,7 @@ class RekamMedisController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-          
+           
             'rekam_tanggal'         => 'required|date',
             'rekam_terapinonobat'   => 'required',
             'rekam_anamnesa'        => 'required',
@@ -57,12 +61,16 @@ class RekamMedisController extends Controller
             'rekam_kecelakaan'      => 'required',
             'rekam_tenagamedis'     => 'required',
             'rekam_statuspulang'    => 'required',
-            'rekam_idlayanan'       => 'required',
+            'rekam_idlayanan',
         ]);
 
         RekamMedis::create($request->all());
+        // Ubah status pasien menjadi "Selesai"
+        $daftarLayanan = DaftarLayanan::findOrFail($request->rekam_idlayanan);
+        $daftarLayanan->daftar_status = "SELESAI";
+        $daftarLayanan->save();
 
-        return redirect()->route('rekam_medis.tampil')
+        return redirect()->route('rekam_medis.index')
             ->with('success', 'Rekam Medis Pasien berhasil ditambahkan.');
     }
 
@@ -83,6 +91,8 @@ class RekamMedisController extends Controller
      */
     public function edit(string $id)
     {
+        $rekammedis = RekamMedis::join('daftar_layanan', 'daftar_id', '=', 'rekam_medis.rekam_idlayanan')
+            ->join('pasien', 'pasien_id', '=', 'daftar_layanan.daftar_idpasien');
         $rekammedis = RekamMedis::findOrFail($id);
         return view('rekam_medis.edit', compact('rekammedis'));
     }
@@ -95,7 +105,7 @@ class RekamMedisController extends Controller
         $rekammedis = RekamMedis::findOrFail($id);
 
         $request->validate([
-          
+            
             'rekam_tanggal'         => 'required|date',
             'rekam_terapinonobat'       => 'required',
             'rekam_anamnesa'        => 'required',
@@ -133,4 +143,52 @@ class RekamMedisController extends Controller
     {
         //
     }
-}
+    public function mencari(Request $request)
+    {
+        $carikunci = $request->get('carikunci');
+        $pasien = Pasien::find($carikunci);
+        
+    
+        return view('rekam_medis.tambah1', compact('pasien', 'rekammedis'));
+    }
+
+    public function cariPasiennama($daftar_status)
+    {
+        $pasien = DaftarLayanan::find($daftar_status);
+        
+        if ($pasien) {
+            return response()->json([
+                'success' => true,
+                'daftar_layanan' => $daftar_layanan
+            ]);
+        } else {
+            return response()->json([
+                'success' => false
+            ]);
+        }
+    }
+    public function submitForm(Request $request)
+    {
+        // Lakukan validasi input jika diperlukan
+        $validatedData = $request->validate([
+            'daftar_id' => 'required',
+            
+        ]);
+
+        // Cari data pasien berdasarkan ID yang diinputkan
+        $pasien = Pasien::findOrFail($validatedData['daftar_id']);
+
+        // Ubah status pasien menjadi "Selesai"
+        $pasien->status = "SELESAI";
+        $pasien->save();
+
+        // Simpan data rekam medis
+        RekamMedis::create($request->all());
+
+        // Redirect atau lakukan tindakan lainnya setelah perubahan status dan penyimpanan data rekam medis
+        // ...
+
+        return redirect()->back()->with('success', 'Status pasien telah diubah menjadi Selesai dan data rekam medis berhasil disimpan.');
+    }
+    }
+

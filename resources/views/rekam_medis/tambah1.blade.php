@@ -3,7 +3,9 @@
 @section('content27')
 <main id="main" class="main">
 <div class="pagetitle">
-  <h1>Daftar Pasien</h1>
+<div class="pull-left">
+                <h2>Tambah Rekam Medis Pasien</h2>
+            </div>
   <nav>
     <ol class="breadcrumb">
       <l i class="breadcrumb-item"><a href="index.html">Home  /</a></li>
@@ -11,11 +13,9 @@
     </ol>
   </nav>
 </div>
+
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Tambah Pasien Baru</h2>
-            </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('rekam_medis.index') }}"> Kembali</a>
             </div>
@@ -33,18 +33,76 @@
         </div>
     @endif
 
+   
+
     <form action="{{ route('rekam_medis.store') }}" method="POST">
         @csrf
 
+        <table class='table table-bordered'>
+        <thead>
+            <tr class="text-center">
+                <th>No</th>
+                <th>ID Pasien</th>
+                <th>Nomor Layanan</th>
+                <th>Nama Lengkap</th>
+                <th>NIK</th>
+                <th>Jenis Kelamin</th>
+                <th>Alamat</th>
+                <th>Jenis Layanan</th>
+                <th>Tanggal Daftar</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            @php
+            $no = 1;
+            @endphp
+            @foreach ($rekammedis as $data)
+            <tr>
+                <th class="text-center" scope="row">{{ $no++ }}</th>
+                <td class="text-center">{{ $data->pasien->pasien_id }}</td>
+                <td class="status-layanan">{{ $data->daftar_id }}</td>
+                <td class="nama-lengkap">{{ $data->pasien->pasien_nama }}</td>
+                <td class="text-center">{{ $data->pasien->pasien_nik }}</td>
+                <td class="text-center">{{ $data->pasien->pasien_gender }}</td>
+                <td>{{ $data->pasien->pasien_alamat }}</td>
+                <td class="text-center">{{ $data->jenis_layanan->jenis_layanan }}</td>
+                <td class="text-justify">{{ $data->daftar_tanggal }}</td>
+                <td class="text-center">
+                    @if($data->daftar_status == 'BERLANGSUNG')
+                    <span class="badge bg-warning">BERLANGSUNG</span>
+                    @elseif($data->daftar_status == 'SELESAI')
+                    <span class="badge bg-success">SELESAI</span>
+                    @else
+                    <span class="badge bg-danger">BATAL</span>
+                    @endif
+                </td>
+                <td>
+                    <form action>
+                        <a class="btn btn-primary pilih-btn" data-id="{{ $data->daftar_id }}">Pilih</a>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+        </table>
+        <form action="{{ route('rekam_medis.store') }}" method="POST">
+        @csrf
 
-            <!-- <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Nama:</strong>
-                    
-                    <input type="text" name="rekam_id" class="form-control" placeholder="Nama">
-                </div>
-            </div> -->
+        <div class="form-group">
+            <strong>Id Rekam Medis:</strong>
+            <input id="idStatus" type="text" name="rekam_idlayanan" class="form-control" placeholder="Id Rekam Medis" readonly>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Nama:</strong>
+                <input id="idNamaLengkap" type="text" class="form-control" placeholder="Nama" readonly>
+            </div>
+        </div>
+       
+                
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Tanggal:</strong>
@@ -174,35 +232,71 @@
                 <div class="form-group">
                     <strong>Kecelakaan:</strong>
                     
-                    <input type="number" name="rekam_kecelakaan" class="form-control" placeholder="Kecelakaan">
+                    <input type="text" name="rekam_kecelakaan" class="form-control" placeholder="Kecelakaan">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Tenaga Medis:</strong>
                     
-                    <input type="number" name="rekam_tenagamedis" class="form-control" placeholder="Tenaga Medis">
+                    <input type="text" name="rekam_tenagamedis" class="form-control" placeholder="Tenaga Medis">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Statuspulang:</strong>
                     
-                    <input type="number" name="rekam_statuspulang" class="form-control" placeholder="Status Pulang">
+                    <input type="text" name="rekam_statuspulang" class="form-control" placeholder="Status Pulang">
                 </div>
             </div>
             
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Id Layanan:</strong>
-                    
-                    <input type="text" name="rekam_idlayanan" class="form-control" placeholder="ID Layanan">
-                </div>
-            </div>
+          
+
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
 
     </form>
+    <script>
+        // Ambil elemen tombol "Pilih"
+        var pilihBtns = document.getElementsByClassName('pilih-btn');
+
+        // Ambil elemen input yang akan diisi dengan data dari tabel
+        var namaInput = document.getElementById('idNamaLengkap');
+        var statusLayananInput = document.getElementById('idStatus');
+
+        // Tambahkan event listener untuk setiap tombol "Pilih"
+        Array.from(pilihBtns).forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                // Ambil data yang terkait dengan tombol "Pilih"
+                var namaElement = this.parentNode.parentNode.parentNode.querySelector('.nama-lengkap');
+                var statusLayananElement = this.parentNode.parentNode.parentNode.querySelector('.status-layanan');
+
+                // Periksa jika elemen tidak null sebelum mengakses textContent
+                var nama = namaElement ? namaElement.textContent : '';
+                var statusLayanan = statusLayananElement ? statusLayananElement.textContent : '';
+
+                // Masukkan data ke dalam input form
+                namaInput.value = nama;
+                statusLayananInput.value = statusLayanan;
+            });
+        });
+    </script>
+</main>
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

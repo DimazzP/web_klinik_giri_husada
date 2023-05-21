@@ -1,9 +1,17 @@
-
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Cetak Rekam Medis</title>
     <style>
+        table {
+        width: 100%;
+        border-collapse: collapse;
+            }
+
+        th, td {
+        padding: 8px;
+        border: 1px solid black;
+        }
         body {
             font-family: Arial, sans-serif;
         }
@@ -80,158 +88,120 @@
 </head>
 <body>
 <div class="container">
-        <div class="header">
-            <div class="logo-container">
-                <img class="logo" src="{{ asset('frontend/assets/img/klinik.png') }}" alt="Logo Rumah Sakit">
-                <div>
-                    <h1>Klinik Giri Usada</h1>
-                    <p>Jl. Penjahitan No. 14, Nganjuk, Jawa Timur</p>
-                </div>
+    <div class="header">
+        <div class="logo-container">
+            <img class="logo" src="{{ asset('frontend/assets/img/klinik.png') }}" alt="Logo Rumah Sakit">
+            <div>
+                <h1>Klinik Giri Usada</h1>
+                <p>Ds. Girirejo, Kec. Bagor, Kab. Nganjuk, Jawa Timur</p>
             </div>
-            <h1>Rekam Medis ID {{ $rekammedis->rekam_id }}</h1>
-            <p>Nama Pasien: {{ $rekammedis->pasien_nama}}</p>
         </div>
+        <h1>Rekam Medis ID {{ $rekammedis1->rekam_id }}</h1>
+        <p>Nama     : {{ $rekammedis1->pasien_nama}}</p>
+        <p>NIK      : {{ $rekammedis1->pasien_nik}}</p>
+        <p>Alamat   : {{ $rekammedis1->pasien_alamat}}</p>
+    </div>
 
-        <div class="separator"></div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="signature">
-                                <strong>Tanggal:</strong>
-                                {{ $rekammedis->rekam_tanggal }}
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-100">
-                            <div class="form-group">
-                                <div class="col-md-4"
-                                style=  padding: 20px;> 
-                                <strong>Terapi Non Obat:</strong>
-                                {{ $rekammedis->rekam_terapinonobat}}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Anamnesa:</strong>
-                                {{ $rekammedis->rekam_anamnesa }}
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Alergi:</strong>
-                                {{ $rekammedis->rekam_alergi }}
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>prognosa:</strong>
-                                {{ $rekammedis->rekam_prognosa }}
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Terapi Obat:</strong>
-                                {{ $rekammedis->rekam_terapiobat }}
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>bmhp:</strong>
-                                {{ $rekammedis->rekam_bmhp }}
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Diagnosa:</strong>
-                                {{ $rekammedis->rekam_diagnosa }}
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Kesadaran:</strong>
-                                {{ $rekammedis->rekam_kesadaran }}
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Suhu:</strong>
-                                {{ $rekammedis->rekam_suhu }}
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>sistole:</strong>
-                                {{ $rekammedis->rekam_sistole }}
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Respiratorydate:</strong>
-                                {{ $rekammedis->rekam_respiratorydate }}
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Diastole:</strong>
-                                {{ $rekammedis->rekam_diastole }}
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>heartrate:</strong>
-                                {{ $rekammedis->rekam_heartrate }}
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Tinggi Badan:</strong>
-                                {{ $rekammedis->rekam_tinggibadan}}
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Berat Badan:</strong>
-                                {{ $rekammedis->rekam_beratbadan }}
-                            </div>
-                        </div>     
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Lingkar Perut:</strong>
-                                {{ $rekammedis->rekam_lingkarperut }}
-                            </div>
-                        </div>   
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Imt:</strong>
-                                {{ $rekammedis->rekam_imt }}
-                            </div>
-                        </div> 
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Kecelakaan:</strong>
-                                {{ $rekammedis->rekam_kecelakaan }}
-                            </div>
-                        </div>    
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Tenaga Medis:</strong>
-                                {{ $rekammedis->rekam_tenagamedis }}
-                            </div>
-                        </div>    
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Status Pulang:</strong>
-                                {{ $rekammedis->rekam_statuspulang}}
-                            </div>
-                        </div>              
-                    </div>
-                    <div class="signature">
-                        <p>_________________________</p>
-                        <p>Nganjuk,..-.....20...</p>
-                    </div>
+    <div class="separator"></div>
+    <div class ="signature">
+        <p>{{ $rekammedis1->rekam_tanggal}}</p>
+    </div>
+
+    <table>
+       
+        <tr>
+            <td><strong>Jenis Kelamin:</strong></td>
+            <td>{{ $rekammedis1->pasien_gender}}</td>
+        </tr>
+        <tr>
+            <td><strong>Terapi Non Obat:</strong></td>
+            <td>{{ $rekammedis1->rekam_terapinonobat}}</td>
+        </tr>
+        <tr>
+            <td><strong>Anamnesa:</strong></td>
+            <td>{{ $rekammedis1->rekam_anamnesa }}</td>
+        </tr>
+        <tr>
+            <td><strong>Alergi:</strong></td>
+            <td>{{ $rekammedis1->rekam_alergi }}</td>
+        </tr>
+        <tr>
+            <td><strong>prognosa:</strong></td>
+            <td>{{ $rekammedis1->rekam_prognosa }}</td>
+        </tr>
+        <tr>
+            <td><strong>Terapi Obat:</strong></td>
+            <td>{{ $rekammedis1->rekam_terapiobat }}</td>
+        </tr>
+        <tr>
+            <td><strong>bmhp:</strong></td>
+            <td>{{ $rekammedis1->rekam_bmhp }}</td>
+        </tr>
+        <tr>
+            <td><strong>Diagnosa:</strong></td>
+            <td>{{ $rekammedis1->rekam_diagnosa }}</td>
+        </tr>
+        <tr>
+            <td><strong>Kesadaran:</strong></td>
+            <td>{{ $rekammedis1->rekam_kesadaran }}</td>
+        </tr>
+        <tr>
+            <td><strong>Suhu:</strong></td>
+            <td>{{ $rekammedis1->rekam_suhu }}</td>
+        </tr>
+        <tr>
+            <td><strong>sistole:</strong></td>
+            <td>{{ $rekammedis1->rekam_sistole }}</td>
+        </tr>
+        <tr>
+            <td><strong>Respiratorydate:</strong></td>
+            <td>{{ $rekammedis1->rekam_respiratorydate }}</td>
+        </tr>
+        <tr>
+            <td><strong>Diastole:</strong></td>
+            <td>{{ $rekammedis1->rekam_diastole }}</td>
+        </tr>
+        <tr>
+            <td><strong>heartrate:</strong></td>
+            <td>{{ $rekammedis1->rekam_heartrate }}</td>
+        </tr>
+        <tr>
+            <td><strong>Tinggi Badan:</strong></td>
+            <td>{{ $rekammedis1->rekam_tinggibadan}}</td>
+        </tr>
+        <tr>
+            <td><strong>Berat Badan:</strong></td>
+            <td>{{ $rekammedis1->rekam_beratbadan }}</td>
+        </tr>
+        <tr>
+            <td><strong>Lingkar Perut:</strong></td>
+            <td>{{ $rekammedis1->rekam_lingkarperut }}</td>
+        </tr>
+        <tr>
+            <td><strong>Imt:</strong></td>
+            <td>{{ $rekammedis1->rekam_imt }}</td>
+        </tr>
+        <tr>
+            <td><strong>Kecelakaan:</strong></td>
+            <td>{{ $rekammedis1->rekam_kecelakaan }}</td>
+        </tr>
+        <tr>
+            <td><strong>Tenaga Medis:</strong></td>
+            <td>{{ $rekammedis1->rekam_tenagamedis }}</td>
+        </tr>
+        <tr>
+            <td><strong>Status Pulang:</strong></td>
+            <td>{{ $rekammedis1->rekam_statuspulang}}</td>
+        </tr>
+    </table>
+
+   
 
     <script>
         window.onload = function() {
             window.print();
         };
     </script>
+</div>
 </body>
 </html>
