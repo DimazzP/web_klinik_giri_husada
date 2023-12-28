@@ -105,7 +105,6 @@ class AuthController extends Controller
                 ], 403);
             }
 
-
             $profile = Profile::create([
                 'pasien_nama' => $request->pasien_nama,
                 'pasien_nik' => $request->pasien_nik,

@@ -22,6 +22,9 @@ use App\Http\Controllers\Api\ResetPasswordController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/testaja', function () {
+    return 'testaja';
+});
 // Route::get('/auth/register', [AuthController::class, 'getData'])->middleware(['auth:sanctum', 'abilities:pasien']);
 Route::post('/auth/register', [AuthController::class, 'registerPasien']);
 Route::post('/reset/password/nomor', [ResetPasswordController::class, 'checkNomor']);

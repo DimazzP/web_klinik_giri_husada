@@ -13,7 +13,6 @@ class JenisLayanan extends Model
     protected $table = 'jenis_layanan';
 
     protected $fillable = [
-        'jenis_id',
         'jenis_layanan',
         'jenis_iddokter',
     ];
@@ -22,4 +21,7 @@ class JenisLayanan extends Model
     {
         return $this->belongsTo(DaftarLayanan::class, 'daftar_idjenis');
     }
+    protected $casts = [
+        'jenis_iddokter' => 'integer',
+    ];
 }

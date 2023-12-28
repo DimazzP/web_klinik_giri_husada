@@ -42,4 +42,8 @@ class DaftarLayanan extends Model
     {
         return $this->belongsTo(JenisLayanan::class, 'daftar_idjenis');
     }
+    protected $casts = [
+        'daftar_idpasien' => 'integer',
+        'daftar_idjenis' => 'integer',
+    ];
 }

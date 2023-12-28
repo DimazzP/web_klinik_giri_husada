@@ -97,8 +97,8 @@ class DaftarController extends Controller
                 'daftar_idjenis' => $request->daftar_idjenis,
             ]);
 
-            $jenis = JenisLayanan::findOrFail($daftar->daftar_idjenis)->first();
-            $pekerja = Pekerja::findOrFail($jenis->jenis_iddokter)->first();
+            $jenis = JenisLayanan::findOrFail($daftar->daftar_idjenis);
+            $pekerja = Pekerja::findOrFail($jenis->jenis_iddokter);
 
             return response()->json([
                 'status' => 201,

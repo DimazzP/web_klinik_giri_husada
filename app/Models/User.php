@@ -53,5 +53,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'verified_at' => 'datetime',
+        'user_idkategori' => 'integer',
+        'user_idpasien' => 'integer',
     ];
 }
